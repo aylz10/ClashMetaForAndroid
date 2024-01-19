@@ -182,12 +182,19 @@ func convertProxies(proxies []C.Proxy, uiSubtitlePattern *regexp2.Regexp) []*Pro
 			}
 		}
 
+        var test_url string = ""
+        myMap := p.ExtraDelayHistories()
+        for k := range myMap {
+            if len(k) > 0 {
+                test_url = string(k)
+            }
+        }
 		result = append(result, &Proxy{
 			Name:     name,
 			Title:    strings.TrimSpace(title),
 			Subtitle: strings.TrimSpace(subtitle),
 			Type:     p.Type().String(),
-			Delay:    int(p.LastDelayForTestUrl("https://www.gstatic.com/generate_204")),
+			Delay:    int(p.LastDelayForTestUrl(test_url)),
 		})
 	}
 	return result
@@ -213,12 +220,19 @@ func collectProviders(providers []provider.ProxyProvider, uiSubtitlePattern *reg
 				}
 			}
 
+        var test_url string = ""
+        myMap := px.ExtraDelayHistories()
+        for k := range myMap {
+            if len(k) > 0 {
+                test_url = string(k)
+            }
+        }
 			result = append(result, &Proxy{
 				Name:     name,
 				Title:    strings.TrimSpace(title),
 				Subtitle: strings.TrimSpace(subtitle),
 				Type:     px.Type().String(),
-				Delay:    int(px.LastDelayForTestUrl("https://www.gstatic.com/generate_204")),
+				Delay:    int(px.LastDelayForTestUrl(test_url)),
 			})
 		}
 	}
