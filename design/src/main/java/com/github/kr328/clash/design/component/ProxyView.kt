@@ -123,7 +123,7 @@ class ProxyView(
         // measure delay text bounds
         val delayCount = paint.breakText(
             state.delayText,
-            false,
+            true,
             (width - state.config.layoutPadding * 2 - state.config.contentPadding * 2)
                 .coerceAtLeast(0f),
             null
@@ -144,15 +144,26 @@ class ProxyView(
         // measure title text bounds
         val titleCount = paint.breakText(
             state.title,
-            false,
+            true,
             mainTextWidth,
             null,
         )
+        var titleCount2: Int = 0
+        if (titleCount < state.title.length){
+            titleCount2 = paint.breakText(
+                state.title,
+                titleCount,
+                state.title.length,
+                true,
+                mainTextWidth,
+                null,
+            )
+        }
 
         // measure subtitle text bounds
         val subtitleCount = paint.breakText(
             state.subtitle,
-            false,
+            true,
             mainTextWidth,
             null,
         )
@@ -178,16 +189,25 @@ class ProxyView(
         canvas.apply {
             val x = state.config.layoutPadding + state.config.contentPadding
             val y = state.config.layoutPadding +
-                    (height - state.config.layoutPadding * 2) / 3f - textOffset
+                    (height - state.config.layoutPadding * 2) / 4f - textOffset
 
             drawText(state.title, 0, titleCount, x, y, paint)
+        }
+        if (titleCount < state.title.length){
+            canvas.apply {
+                val x = state.config.layoutPadding + state.config.contentPadding
+                val y = state.config.layoutPadding +
+                    (height - state.config.layoutPadding * 2) / 4f * 2 - textOffset
+
+                drawText(state.title, titleCount, titleCount + titleCount2, x, y, paint)
+            }
         }
 
         // draw subtitle
         canvas.apply {
             val x = state.config.layoutPadding + state.config.contentPadding
             val y = state.config.layoutPadding +
-                    (height - state.config.layoutPadding * 2) / 3f * 2 - textOffset
+                    (height - state.config.layoutPadding * 2) / 4f * 3 - textOffset
 
             drawText(state.subtitle, 0, subtitleCount, x, y, paint)
         }

@@ -3,6 +3,8 @@ build/
 /app/foss/release
 /app/premium/release
 /captures
+/release.keystore
+release.keystore
 
 # Ignore Gradle GUI config
 gradle-app.setting
