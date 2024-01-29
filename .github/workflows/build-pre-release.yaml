@@ -34,10 +34,13 @@ jobs:
 
       - name: Signing properties
         env:
+          ENCODED_KEYSTORE_BASE_64: ${{ secrets.KEYSTORE_BASE_64 }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
         run: |
+          echo $ENCODED_KEYSTORE_BASE_64 > keystore-b64.txt
+          base64 -d keystore-b64.txt > release.keystore
           touch signing.properties
           echo keystore.password="$SIGNING_STORE_PASSWORD" > signing.properties
           echo key.alias="$SIGNING_KEY_ALIAS" >> signing.properties
