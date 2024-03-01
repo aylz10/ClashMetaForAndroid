@@ -61,6 +61,7 @@ require (
 	github.com/metacubex/sing-tun v0.2.1-0.20240214100323-23e40bfb9067 // indirect
 	github.com/metacubex/sing-vmess v0.1.9-0.20231207122118-72303677451f // indirect
 	github.com/metacubex/sing-wireguard v0.0.0-20231209125515-0594297f7232 // indirect
+	github.com/metacubex/tfo-go v0.0.0-20240228025757-be1269474a66 // indirect
 	github.com/mroth/weightedrand/v2 v2.1.0 // indirect
 	github.com/oasisprotocol/deoxysii v0.0.0-20220228165953-2091330c22b7 // indirect
 	github.com/onsi/ginkgo/v2 v2.9.5 // indirect
@@ -76,7 +77,6 @@ require (
 	github.com/sagernet/sing-mux v0.2.1-0.20240124034317-9bfb33698bb6 // indirect
 	github.com/sagernet/sing-shadowtls v0.1.4 // indirect
 	github.com/sagernet/smux v0.0.0-20231208180855-7041f6ea79e7 // indirect
-	github.com/sagernet/tfo-go v0.0.0-20231209031829-7b5343ac1dc6 // indirect
 	github.com/sagernet/utls v1.5.4 // indirect
 	github.com/sagernet/wireguard-go v0.0.0-20231209092712-9a439356a62e // indirect
 	github.com/samber/lo v1.39.0 // indirect
